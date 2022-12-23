@@ -1,0 +1,16 @@
+.employeeList {
+    background-color: #B0BEC5;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

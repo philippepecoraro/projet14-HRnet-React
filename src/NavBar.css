@@ -1,0 +1,47 @@
+.navbar {
+    height: 90px;     
+    background-color: #78909C;
+    display: flex;
+    flex-direction: row;   
+    align-items: center;  
+    justify-content: space-between;   
+    width: 100%;
+    margin: auto;
+}
+
+.navbar-title {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 32px;  
+    margin-left: 20px;    
+} 
+
+.navbarTitle {
+    text-decoration: none;
+    color: black;
+} 
+
+.navbarLink {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 18px;   
+    display: flex;
+    flex-direction: row;          
+} 
+
+.navbarText1 {
+    text-decoration: none;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: black;
+}
+
+.navbarText1:hover, .navbarText2:hover, .navbarTitle:hover {
+    text-decoration: underline;
+}
+
+.navbarText2 {
+    text-decoration: none;
+    margin-right: 20px;
+    color: black;
+}
