@@ -29,6 +29,18 @@ const EmployeeList = () => {
                         <div>
                             {employeesList[0].startDateWorkString}
                         </div>
+                        <div>
+                            {employeesList[0].americaState.value}
+                        </div>
+                        <div>
+                            {employeesList[0].americaState.label}
+                        </div>
+                        <div>
+                            {employeesList[0].department.value}
+                        </div>
+                        <div>
+                            {employeesList[0].department.label}
+                        </div>
                     </div>
                 }
             </div>

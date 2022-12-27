@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addEmployee } from './homeSlice'
 import DateTimePicker from '../../common/Datepicker/DateTimePicker'
+import FormSelect from '../../common/Select/FormSelect'
 
 
 const Home = () => {
@@ -19,8 +20,9 @@ const Home = () => {
         startDateWork: "",
         street: "",
         city: "",
+        americaState: { value: "AL", label: "Alabama" },
         zipCode: "",
-        department: ""
+        department: { value: "Sales", label: "Sales" }
     }
 
     const validationSchema = Yup.object().shape({
@@ -32,16 +34,20 @@ const Home = () => {
             .required("This field is required")
             .min(3, "Too Short")
             .max(50, "Too Long"),
+        dateOfBirth: Yup.string()
+            .required("This field is required"),
+        startDateWork: Yup.string()
+            .required("This field is required"),
     })
 
     const handleSubmit = (formValue) => {
         const { firstName, lastName, dateOfBirth, startDateWork,
-            street, city, zipCode, department } = formValue;
+            street, city, americaState, zipCode, department } = formValue;
         const dateOfBirthString = new Date(dateOfBirth).toLocaleDateString('en-US')
         const startDateWorkString = new Date(startDateWork).toLocaleDateString('en-US')
         dispatch(addEmployee({
             firstName, lastName, dateOfBirthString, startDateWorkString,
-            street, city, zipCode, department
+            street, city, americaState, zipCode, department
         }))
         navigate('/employeeList')
     }
@@ -52,7 +58,9 @@ const Home = () => {
                 <div className="title">
                     <h1>HRnet</h1>
                 </div>
-                <h2>Create Employee</h2>
+                {/* <div className="subTitle">
+                    <h2>Create Employee</h2>
+                </div> */}
                 <Formik
                     onSubmit={handleSubmit}
                     initialValues={initialvalues}
@@ -60,6 +68,9 @@ const Home = () => {
                 >
                     {({ values, setFieldValue }) => (
                         <Form>
+                            <div className="subTitle">
+                                <h2>Create Employee</h2>
+                            </div>
                             <div className="input-wrapper">
                                 <label htmlFor="firstName">First Name</label>
                                 <Field name="firstName" type="text" id="firstName" />
@@ -85,7 +96,6 @@ const Home = () => {
                                     value={values.dateOfBirth}
                                     onChange={date => setFieldValue('dateOfBirth', date)}
                                 />
-
                                 <ErrorMessage
                                     name="dateOfBirth"
                                     component="div"
@@ -100,7 +110,7 @@ const Home = () => {
                                     onChange={date => setFieldValue('startDateWork', date)}
                                 />
                                 <ErrorMessage
-                                    name="startDate"
+                                    name="startDateWork"
                                     component="div"
                                     className="error-text" />
                             </div>
@@ -126,8 +136,13 @@ const Home = () => {
                                 </div>
 
                                 <div className="input-wrapper">
-                                    <label htmlFor="state">State</label>
-                                    <Field as="select" name="state" id="state"></Field>
+                                    <label htmlFor="americaState">State</label>
+                                    <FormSelect
+                                        name="americaState"
+                                        value={values.state}
+                                        onChange={americaState => setFieldValue("americaState", americaState)}
+                                        defaultValue={{ value: "AL", label: "Alabama" }}
+                                    />
                                 </div>
 
                                 <div className="input-wrapper">
@@ -142,13 +157,12 @@ const Home = () => {
 
                             <div className="input-wrapper">
                                 <label htmlFor="department">Department</label>
-                                <Field as="select" name="department" id="department">
-                                    <option>Sales</option>
-                                    <option>Marketing</option>
-                                    <option>Engineering</option>
-                                    <option>Human Resources</option>
-                                    <option>Legal</option>
-                                </Field>
+                                <FormSelect
+                                    name="department"
+                                    value={values.state}
+                                    onChange={department => setFieldValue("department", department)}
+                                    defaultValue={{ value: "Sales", label: "Sales" }}
+                                />
                             </div>
                             <button type="submit" className="formButton">Save</button>
                         </Form>
