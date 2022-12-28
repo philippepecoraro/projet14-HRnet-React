@@ -1,0 +1,61 @@
+.globalFilter {
+   display: flex;
+   justify-content: space-between;  
+   align-items: baseline;
+} 
+
+.globalFilterSelect {
+    display: flex;
+}
+
+.globalFilterSelectText {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.globalFilter label {
+    display: flex;
+    align-items: baseline;
+}
+
+.globalFilterText {
+    margin-right: 10px;
+    font-size: 16px
+}
+
+.tableTable {  
+   border: 1px solid black;   
+}
+
+.thTable {
+    color: black;   
+}
+
+.tdTable {   
+    padding: 10px;
+    border: 1px solid gray;
+}
+
+.globalFilterInput {
+    margin-bottom: 3px;
+}
+
+.tablePagination {
+display: flex;
+justify-content: center;
+margin-top: 10px;
+} 
+
+.tablePaginationPage {
+    display: flex;
+    flex-direction: row;
+}
+
+.tablePaginationLabel {
+    margin: 0;
+    display: flex;    
+}
+
+.tablePaginationNumber {
+    width: 50px;
+}

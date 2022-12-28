@@ -12,7 +12,7 @@ const NavBar = () => {
             </div>
             <div className='navbarLink'>
                 <Link to={'/'} className='navbarText1'>Home</Link>
-                <Link to={'employeeList'} className='navbarText2'>View Current Employee</Link>
+                <Link to={'employeeList'} className='navbarText2'>View Current Employees</Link>
             </div>
         </div>
 

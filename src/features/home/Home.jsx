@@ -28,16 +28,26 @@ const Home = () => {
     const validationSchema = Yup.object().shape({
         firstName: Yup.string()
             .required("This field is required")
-            .min(3, "Too Short")
-            .max(50, "Too Long"),
+            .min(2, "Too Short")
+            .max(20, "Too Long"),
         lastName: Yup.string()
             .required("This field is required")
-            .min(3, "Too Short")
-            .max(50, "Too Long"),
+            .min(2, "Too Short")
+            .max(20, "Too Long"),
         dateOfBirth: Yup.string()
             .required("This field is required"),
         startDateWork: Yup.string()
             .required("This field is required"),
+        street: Yup.string()
+            .required("This field is required")
+            .max(20, "Too Long"),
+        city: Yup.string()
+            .required("This field is required")
+            .max(20, "Too Long"),
+        zipCode: Yup.string()
+            .required("This field is required")
+            .min(5, "Too Short")
+            .max(5, "Too Long"),
     })
 
     const handleSubmit = (formValue) => {
@@ -58,9 +68,6 @@ const Home = () => {
                 <div className="title">
                     <h1>HRnet</h1>
                 </div>
-                {/* <div className="subTitle">
-                    <h2>Create Employee</h2>
-                </div> */}
                 <Formik
                     onSubmit={handleSubmit}
                     initialValues={initialvalues}
