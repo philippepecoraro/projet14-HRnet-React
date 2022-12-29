@@ -1,5 +1,4 @@
 import './EmployeeList.css'
-import { useSelector } from 'react-redux'
 import Table from '../../common/Table/Table'
 
 

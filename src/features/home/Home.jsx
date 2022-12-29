@@ -2,16 +2,17 @@ import './Home.css'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import { addEmployee } from './homeSlice'
 import DateTimePicker from '../../common/Datepicker/DateTimePicker'
 import FormSelect from '../../common/Select/FormSelect'
+import { Modal } from 'phpecoraro-npm-modal'
+import { useState } from 'react';
+
 
 
 const Home = () => {
-    let navigate = useNavigate();
     const dispatch = useDispatch();
-
+    const [show, setShow] = useState(false);
 
     const initialvalues = {
         firstName: "",
@@ -59,7 +60,6 @@ const Home = () => {
             firstName, lastName, dateOfBirthString, startDateWorkString,
             street, city, americaState, zipCode, department
         }))
-        navigate('/employeeList')
     }
 
     return (
@@ -73,7 +73,7 @@ const Home = () => {
                     initialValues={initialvalues}
                     validationSchema={validationSchema}
                 >
-                    {({ values, setFieldValue }) => (
+                    {({ values, setFieldValue, dirty, isValid }) => (
                         <Form>
                             <div className="subTitle">
                                 <h2>Create Employee</h2>
@@ -171,7 +171,19 @@ const Home = () => {
                                     defaultValue={{ value: "Sales", label: "Sales" }}
                                 />
                             </div>
-                            <button type="submit" className="formButton">Save</button>
+                            {(dirty && isValid) ?
+                                <div>
+                                    <button type="submit" className="formButton" onClick={() =>
+                                        setShow(true)}
+                                    >Save</button>
+                                    <Modal title="Create Employee"
+                                        onClose={() => setShow(false)} show={show}>
+                                        <p>Employee Created</p>
+                                    </Modal>
+                                </div>
+                                :
+                                <button type="submit" className="formButton">Save</button>
+                            }
                         </Form>
                     )}
                 </Formik>

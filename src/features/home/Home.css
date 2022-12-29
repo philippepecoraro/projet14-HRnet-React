@@ -1,6 +1,6 @@
 .home {   
     background-color: #B0BEC5;
-    height: 1100px;
+    height: 1200px;
 }
 
 .container {
@@ -16,8 +16,7 @@
     justify-content: center;     
 }
 
-.subTitle {
-    /* font-size: 14px;   */
+.subTitle {   
     font-size: 1rem;
 }
 
