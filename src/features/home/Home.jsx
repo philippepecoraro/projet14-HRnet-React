@@ -3,11 +3,11 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { useDispatch } from 'react-redux'
 import { addEmployee } from './homeSlice'
-import DateTimePicker from '../../common/Datepicker/DateTimePicker'
-import FormSelect from '../../common/Select/FormSelect'
 import { Modal } from 'phpecoraro-npm-modal'
-import { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 
+const DateTimePicker = React.lazy(() => import('../../common/Datepicker/DateTimePicker'))
+const FormSelect = React.lazy(() => import('../../common/Select/FormSelect'))
 
 
 const Home = () => {
@@ -98,11 +98,13 @@ const Home = () => {
 
                             <div className="input-wrapper">
                                 <label htmlFor="dateOfBirth">Date of Birth</label>
-                                <DateTimePicker
-                                    name="dateOfBirth"
-                                    value={values.dateOfBirth}
-                                    onChange={date => setFieldValue('dateOfBirth', date)}
-                                />
+                                <Suspense fallback={<div>Chargement ...</div>}>
+                                    <DateTimePicker
+                                        name="dateOfBirth"
+                                        value={values.dateOfBirth}
+                                        onChange={date => setFieldValue('dateOfBirth', date)}
+                                    />
+                                </Suspense>
                                 <ErrorMessage
                                     name="dateOfBirth"
                                     component="div"
@@ -111,11 +113,13 @@ const Home = () => {
 
                             <div className="input-wrapper">
                                 <label htmlFor="startDateWork">Start Date</label>
-                                <DateTimePicker
-                                    name="startDateWork"
-                                    value={values.startDateWork}
-                                    onChange={date => setFieldValue('startDateWork', date)}
-                                />
+                                <Suspense fallback={<div>Chargement ...</div>}>
+                                    <DateTimePicker
+                                        name="startDateWork"
+                                        value={values.startDateWork}
+                                        onChange={date => setFieldValue('startDateWork', date)}
+                                    />
+                                </Suspense>
                                 <ErrorMessage
                                     name="startDateWork"
                                     component="div"
@@ -144,12 +148,14 @@ const Home = () => {
 
                                 <div className="input-wrapper">
                                     <label htmlFor="americaState">State</label>
-                                    <FormSelect
-                                        name="americaState"
-                                        value={values.state}
-                                        onChange={americaState => setFieldValue("americaState", americaState)}
-                                        defaultValue={{ value: "AL", label: "Alabama" }}
-                                    />
+                                    <Suspense fallback={<div>Chargement ...</div>}>
+                                        <FormSelect
+                                            name="americaState"
+                                            value={values.state}
+                                            onChange={americaState => setFieldValue("americaState", americaState)}
+                                            defaultValue={{ value: "AL", label: "Alabama" }}
+                                        />
+                                    </Suspense>
                                 </div>
 
                                 <div className="input-wrapper">
@@ -164,12 +170,14 @@ const Home = () => {
 
                             <div className="input-wrapper">
                                 <label htmlFor="department">Department</label>
-                                <FormSelect
-                                    name="department"
-                                    value={values.state}
-                                    onChange={department => setFieldValue("department", department)}
-                                    defaultValue={{ value: "Sales", label: "Sales" }}
-                                />
+                                <Suspense fallback={<div>Chargement ...</div>}>
+                                    <FormSelect
+                                        name="department"
+                                        value={values.state}
+                                        onChange={department => setFieldValue("department", department)}
+                                        defaultValue={{ value: "Sales", label: "Sales" }}
+                                    />
+                                </Suspense>
                             </div>
                             {(dirty && isValid) ?
                                 <div>
