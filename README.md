@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# HRnet
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+**Contains:**
+- Bundle analyzer with [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
+- [CRACO (Create React App Configuration Override)](https://github.com/gsoft-inc/craco)
+- [Formik](https://www.npmjs.com/package/formik) and [Yup](https://www.npmjs.com/package/yup)
+- [Reduxjs/toolkit](https://www.npmjs.com/package/@reduxjs/toolkit)
+- [Redux-persist](https://www.npmjs.com/package/redux-persist)
+- [React-datepicker](https://www.npmjs.com/package/react-datepicker)
+- [React-select](https://www.npmjs.com/package/react-select)
+- [React-table](https://www.npmjs.com/package/react-table)
+- Modal with npm package [phpecoraro-npm-modal](https://www.npmjs.com/package/phpecoraro-npm-modal)
 
 ## Available Scripts
 
@@ -14,10 +25,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `npm run analyze`
+
+The analyze command will set the environment variable required to launch the interactive analyzer. 
+
 
 ### `npm run build`
 
@@ -28,6 +40,10 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `serve -s build`
+
+When build folder is ready to be deployed. You may serve the static server.
 
 ### `npm run eject`
 

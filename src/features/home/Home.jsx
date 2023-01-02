@@ -4,10 +4,12 @@ import * as Yup from 'yup'
 import { useDispatch } from 'react-redux'
 import { addEmployee } from './homeSlice'
 import { Modal } from 'phpecoraro-npm-modal'
-import React, { useState, Suspense } from 'react';
+import { useState, Suspense } from 'react';
+import { lazy } from 'react'
 
-const DateTimePicker = React.lazy(() => import('../../common/Datepicker/DateTimePicker'))
-const FormSelect = React.lazy(() => import('../../common/Select/FormSelect'))
+
+const DateTimePicker = lazy(() => import('../../common/Datepicker/DateTimePicker'))
+const FormSelect = lazy(() => import('../../common/Select/FormSelect'))
 
 
 const Home = () => {
